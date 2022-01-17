@@ -1,7 +1,6 @@
 # PythonSnakeGame
 Basic snake game with some extra... features. <br>
 # File descriptions:
-<br>
 `main.py` <br> Basic File for handing the screen and other minor things
 <br> 
 `food.py` <br> Used to handle the food spawning
