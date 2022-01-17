@@ -35,7 +35,7 @@ while run:
   if score == None:
     score = 0
   fontscore = str(score)
-  print(score)
+  #print(score)
   #print(score)
   scoretext = font.render(fontscore, True, (255,255,255))
   window.blit(scoretext, (20,20))
