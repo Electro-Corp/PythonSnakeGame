@@ -1,19 +1,30 @@
-import pygame
-from snake import *
-from food import Food
+try:
+  import pygame
+except ModuleNotFoundError:
+  print("Pygame must be installed.")
+  exit()
+try:
+  from snake import *
+  from food import Food
+  import random as r
+except ModuleNotFoundError:
+  print("Some file missing. Please re-download.")
+  exit()
+
 pygame.init()
 bounds = (300,300)
 window = pygame.display.set_mode(bounds)
-pygame.display.set_caption("Snake.")
+pygame.display.set_caption("Snake: Epic Edition")
 block_size = 20
 snake = Snake(block_size, bounds)
 run = True
 pygame.font.init()
 font = pygame.font.SysFont('comicsans',60, True)
-
+finaltexts = ["git gud lol","really? lame", "fail","git gud haha", "ouch","you sick.","wowzer","ooof","epic fail?","nruh","ur bad","bruh","lamo","lol","xd","end"]
 food = Food(block_size,bounds)
 food.respawn()
 score = 0
+prev = 1 
 while run:
   pygame.time.delay(100-score)
   window.fill((0,0,0))
@@ -43,7 +54,16 @@ while run:
   #snake.check_for_food(food,score)
   if snake.check_bounds() == True or snake.check_tail_collision() == True:
     window.fill((0,0,0))
-    text = font.render('Git Gud lol', True, (255,255,255))
+    
+    num = r.randint(1,r.randint(1,(len(finaltexts)-1)))
+    while num == prev:
+
+      num = r.randint(1,r.randint(1,(len(finaltexts)-1)))
+    prev = num
+    textouch = str(finaltexts[num])
+    print(num)
+    text = font.render(textouch, True,
+     (255,255,255))
     fontscore = "Points: " + fontscore
     scoretext = font.render(fontscore, True, (255,255,255))
     window.blit(text, (20,80))
