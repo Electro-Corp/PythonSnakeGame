@@ -26,6 +26,7 @@ class Snake:
   def draw(self,game,window):
     for segment in self.body:
       game.draw.rect(window,self.color,(segment[0],segment[1],self.block_size, self.block_size))
+      #game.draw.circle(window,self.color,(segment[0],segment[1]),10,20)
   def move(self):
     curr_head = self.body[-1]
     if self.direction == Direction.DOWN:

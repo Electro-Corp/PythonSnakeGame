@@ -7,4 +7,6 @@ Basic snake game with some extra... features. <br>
 <br>
 `snake.py` <br> Used to handle the snek.
 <br>
-Ignore the rest of the files. They are not required or used. 
+<br>
+`main.save` <br> Save File for high score
+Ignore the rest of the files(basicly the ".pycashe",or stuff). They are not required or used. 

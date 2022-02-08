@@ -7,6 +7,7 @@ try:
   from snake import *
   from food import Food
   import random as r
+  import os
 except ModuleNotFoundError:
   print("Some file missing. Please re-download.")
   exit()
@@ -20,7 +21,7 @@ snake = Snake(block_size, bounds)
 run = True
 pygame.font.init()
 font = pygame.font.SysFont('comicsans',60, True)
-finaltexts = ["git gud lol","really? lame", "fail","git gud haha", "ouch","you sick.","wowzer","ooof","epic fail?","nruh","ur bad","bruh","lamo","lol","xd","end"]
+finaltexts = ["git gud lol","really? lame", "fail","git gud haha", "ouch","you suck.","wowzer","ooof","epic fail?","bruh moment","ur bad","bruh","lamo","lol","xd","garbage","unbased","he he haw","F-","end"]
 food = Food(block_size,bounds)
 food.respawn()
 score = 0
@@ -65,9 +66,22 @@ while run:
     text = font.render(textouch, True,
      (255,255,255))
     fontscore = "Points: " + fontscore
+    f = open('main.save','r')
+    a = f.readline()
+    if int(float(a)) < score:
+      d = open('main.save','w')
+      d.write(str(score))
+      d.close()
+    f.close()
+    f = open('main.save','r')
+    a = f.readline()
+    high = font.render(("High: "+ a),True,(255,255,255))
+    
+    f.close()
     scoretext = font.render(fontscore, True, (255,255,255))
     window.blit(text, (20,80))
     window.blit(scoretext, (20,120))
+    window.blit(high,(20,160))
     pygame.display.update()
     pygame.time.delay(1000)
     snake.respawn()
